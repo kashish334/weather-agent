@@ -7,22 +7,25 @@ dotenv.load_dotenv()
 
 weather_toolset = tools.get_weather_toolset()
 
+MODEL = os.getenv("AGENT_MODEL", "gemini-1.5-flash")
+
 root_agent = LlmAgent(
-    model="gemini-2.0-flash",
+    model=MODEL,
     name="weather_agent",
     instruction="""
-        You are a weather assistant that gives people accurate, useful weather information.
+        You are a weather assistant with access to live weather data.
 
-        You have access to a live weather tool. Always use it before answering — never guess
-        or rely on memory for current conditions. Weather changes constantly.
+        Always use the available tools before answering — never guess current conditions.
 
-        When someone asks about weather:
-        - Pull the live data first
-        - Tell them the temperature, what the sky looks like, humidity, and wind
-        - Give a short practical note at the end (good day for a walk? bring a jacket?)
+        You have two tools:
+        - get_current_weather(city): real-time temperature, humidity, wind, and conditions
+        - get_forecast(city, days): day-by-day forecast up to 16 days ahead
 
-        If they ask about multiple cities, check each one separately and compare them.
-        Keep answers friendly and to the point — nobody wants a wall of text about clouds.
+        When answering:
+        - Fetch the data first, then respond based on what you get back
+        - Give a short practical note at the end (umbrella? jacket? good for outdoor plans?)
+        - For multi-city questions, call each city separately and compare
+        - Keep it friendly and concise
     """,
     tools=[weather_toolset],
 )
