@@ -12,7 +12,7 @@ Under the hood:
 - **Google ADK** runs the agent loop
 - **MCP (Model Context Protocol)** connects the agent to a local weather server
 - **Open-Meteo** provides the weather data (free, no API key needed)
-- **Gemini 2.0 Flash** is the model
+- **Gemini 2.5 Flash** is the model
 
 ---
 
