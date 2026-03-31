@@ -30,7 +30,7 @@ if [ "$CHOICE" = "2" ]; then
 GOOGLE_GENAI_USE_VERTEXAI=1
 GOOGLE_CLOUD_PROJECT=$PROJECT_ID
 GOOGLE_CLOUD_LOCATION=us-central1
-AGENT_MODEL=gemini-1.5-flash
+AGENT_MODEL=gemini-2.5-flash
 ENVEOF
     echo "Vertex AI config written. Run: gcloud auth application-default login"
 else
@@ -38,7 +38,7 @@ else
     cat > "$ENV_FILE" <<ENVEOF
 GOOGLE_GENAI_USE_VERTEXAI=0
 GOOGLE_API_KEY=$API_KEY
-AGENT_MODEL=gemini-1.5-flash
+AGENT_MODEL=gemini-2.5-flash
 ENVEOF
     echo "AI Studio config written."
 fi

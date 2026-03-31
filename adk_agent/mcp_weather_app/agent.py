@@ -9,7 +9,7 @@ weather_toolset = tools.get_weather_toolset()
 
 # Read model from .env so it can be changed without touching code.
 # gemini-1.5-flash works on both AI Studio and Vertex AI out of the box.
-MODEL = os.getenv("AGENT_MODEL", "gemini-1.5-flash")
+MODEL = os.getenv("AGENT_MODEL", "gemini-2.5-flash")
 
 root_agent = LlmAgent(
     model=MODEL,
